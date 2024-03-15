@@ -7,11 +7,12 @@ readme = "README.md"
 packages = [{include = "order_finder"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
-fastapi = "^0.110.0"
+python = "^3.10"
+fastapi = {extras = ["uvicorn"], version = "^0.110.0"}
 uvicorn = "^0.28.0"
 requests = "^2.31.0"
 bs4 = "^0.0.2"
+gunicorn = "^21.2.0"
 
 
 [build-system]
