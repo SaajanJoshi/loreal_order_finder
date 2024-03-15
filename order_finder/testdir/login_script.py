@@ -26,4 +26,21 @@ headers = {
 
 response = requests.request("POST", url, headers=headers, data=payload)
 
-print(response.headers['Set-Cookie'].split(";")[0].split("=")[1])
+cookie_dict = response.cookies.get_dict()
+
+cookie = ""
+
+for key,value in cookie_dict.items():
+  cookie = cookie + key + "=" + value + ";"
+
+print(cookie)
+
+
+
+
+
+UyXbcBQ02kMMefHsKSoEbGihk5Cdv8aMSqZ_3STFuXdeEJ4kMcDAirgxJxkKDLpeOjFgQQ4fXM5jIRJbDVJUrQ==
+
+
+
+

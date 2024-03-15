@@ -28,7 +28,7 @@ def search_product(product_name: str):
         'cache-control': 'no-cache',
         'cookie': '',
         'pragma': 'no-cache',
-        'referer': 'https://ca.lorealpartnershop.com/en/accountshow/',
+        'referer': 'https://ca.lorealpartnershop.com/en/login/',
         'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
         'sec-ch-ua-mobile': '?0',
         'sec-ch-ua-platform': '"Windows"',
@@ -40,19 +40,19 @@ def search_product(product_name: str):
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
     }
 
-    new_cookie_value = 'dwsid='+session_id
+    new_cookie_value = str(session_id)
     headers['cookie'] = new_cookie_value
 
-    print("old_session_id="+session_id)
+    print(session_id)
     order_list = get_order_list(headers)
 
-    if len(order_list) == 0:
-        get_session_id.cache_clear()
-        session_id = get_session_id()
-        new_cookie_value = 'dwsid=' + session_id
-        print("new_cookie_value="+new_cookie_value)
-        headers['cookie'] = new_cookie_value
-        order_list = get_order_list(headers)
+    # if len(order_list) == 0:
+    #     get_session_id.cache_clear()
+    #     session_id = get_session_id()
+    #     new_cookie_value = str(session_id)
+    #     print(new_cookie_value)
+    #     headers['cookie'] = new_cookie_value
+    #     order_list = get_order_list(headers)
 
     count = 0
 

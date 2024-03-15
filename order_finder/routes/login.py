@@ -29,8 +29,14 @@ def get_session_id():
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
+    cookie_dict = response.cookies.get_dict()
 
-    return (response.headers['Set-Cookie'].split(";")[0].split("=")[1])
+    cookie = ""
+
+    for key, value in cookie_dict.items():
+        cookie = cookie + key + "=" + value + ";"
+
+    return cookie.strip(";")
 
 
 @router.get("/login")
